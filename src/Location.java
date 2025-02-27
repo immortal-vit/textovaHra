@@ -6,9 +6,42 @@ public class Location {
     private String name;
     private ArrayList<Integer> roomsToGo;
 
-    public Location(int mark, String name, ArrayList<Integer> roomsToGo) {
+    public Location(int mark, String name) {
         this.mark = mark;
         this.name = name;
-        this.roomsToGo = new ArrayList<>();
+    }
+
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Integer> getRoomsToGo() {
+        return roomsToGo;
+    }
+
+    public void setRoomsToGo(ArrayList<Integer> roomsToGo) {
+        this.roomsToGo = roomsToGo;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "mark=" + mark +
+                ", name='" + name + '\'' +
+                ", roomsToGo=" + roomsToGo +
+                '}';
     }
 }
