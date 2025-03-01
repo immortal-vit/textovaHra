@@ -32,4 +32,5 @@ public class Location {
     public void setRoomsToGo(ArrayList<Integer> roomsToGo) {
         this.roomsToGo = roomsToGo;
     }
+
 }

@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class WorldMap {
 
@@ -11,7 +13,7 @@ public class WorldMap {
         loadMap();
     }
 
-    private boolean loadMap(){
+    private void loadMap(){
 
         try(BufferedReader br = new BufferedReader(new FileReader("src/map")) ) {
           String line;
@@ -36,14 +38,47 @@ public class WorldMap {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        setCurrentLocation(0);
 
-        return true;
     }
 
-    public void setCurrentLocation(int currentLocation) {
-        this.currentLocation = currentLocation;
+    public boolean goToNewLocations(Scanner scanner) {
+
+        String listOfLocations = "";
+        ArrayList<Integer> arrayOfLocations =  getListOfPossibleLocations();
+
+        for (int i = 0; i < arrayOfLocations.size(); i++) {
+            listOfLocations += arrayOfLocations.get(i) + " " + map.get(arrayOfLocations.get(i)).getName() + ", " ;
+        }
+        System.out.println(listOfLocations);
+        System.out.println("napiste cislo lokace do ktere chcete jit");
+
+        try {
+            int loacationToGo = scanner.nextInt();
+
+            for (Location l : map.values()) {
+                if (l.getRoomsToGo().contains(loacationToGo)) {
+                    currentLocation = loacationToGo;
+                    return true;
+                }
+            }
+        } catch (InputMismatchException e) {
+            scanner.nextLine();
+            return false;
+        }
+
+
+
+
+        return false;
+
     }
+    public ArrayList<Integer> getListOfPossibleLocations(){
+
+        return map.get(currentLocation).getRoomsToGo();
+
+    }
+
+
 
     public HashMap<Integer, Location> getMap() {
         return map;

@@ -3,16 +3,18 @@ import java.util.Scanner;
 
 public class Console {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
     private boolean exit = false;
     private HashMap<String, Command> commands;
     private WorldMap worldMap;
 
     private void initialization(){
         commands = new HashMap<>();
-        commands.put("jdi", new Move());
-        commands.put("konec", new Exit());
         worldMap = new WorldMap();
+        scanner = new Scanner(System.in);
+        commands.put("jdi", new Move(scanner, worldMap));
+        commands.put("konec", new Exit());
+
     }
 
 
@@ -31,6 +33,7 @@ public class Console {
         initialization();
         do {
             doCommand();
+
         } while (!exit);
     }
 }
