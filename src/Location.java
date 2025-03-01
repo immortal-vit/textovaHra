@@ -24,9 +24,6 @@ public class Location {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public ArrayList<Integer> getRoomsToGo() {
         return roomsToGo;
@@ -34,14 +31,5 @@ public class Location {
 
     public void setRoomsToGo(ArrayList<Integer> roomsToGo) {
         this.roomsToGo = roomsToGo;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "mark=" + mark +
-                ", name='" + name + '\'' +
-                ", roomsToGo=" + roomsToGo +
-                '}';
     }
 }

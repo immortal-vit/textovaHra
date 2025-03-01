@@ -5,9 +5,13 @@ import java.util.HashMap;
 public class WorldMap {
 
     private HashMap<Integer, Location> map = new HashMap<>();
+    private int currentLocation;
 
+    public WorldMap() {
+        loadMap();
+    }
 
-    public boolean loadMap(){
+    private boolean loadMap(){
 
         try(BufferedReader br = new BufferedReader(new FileReader("src/map")) ) {
           String line;
@@ -32,9 +36,16 @@ public class WorldMap {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        setCurrentLocation(0);
 
-
-        return false;
+        return true;
     }
 
+    public void setCurrentLocation(int currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
+    public HashMap<Integer, Location> getMap() {
+        return map;
+    }
 }
