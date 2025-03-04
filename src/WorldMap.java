@@ -78,7 +78,9 @@ public class WorldMap {
 
     }
 
-
+    public int getCurrentLocation() {
+        return currentLocation;
+    }
 
     public HashMap<Integer, Location> getMap() {
         return map;
