@@ -13,9 +13,9 @@ public class Move extends Command{
     @Override
     public String execute() {
         if (world.goToNewLocations(sc)){
-            return "presunul si se do: " + world.getMap().get(world.getCurrentLocation()).getName();
+            return "presunul si se do: " + world.getCurrentLocation().getName();
         } else {
-            return "tato mistnost neexistuje";
+            return "tato mistnost neexistuje nebo neni v nabidce";
         }
 
     }

@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class WorldMap {
 
-    private HashMap<Integer, Location> map = new HashMap<>();
-    private int currentLocation;
+    private final HashMap<Integer, Location> map = new HashMap<>();
+    private int currentLocationNumber;
+    private Location currentLocation;
 
     public WorldMap() {
         loadMap();
@@ -38,6 +39,8 @@ public class WorldMap {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        currentLocationNumber = 0;
+        currentLocation = map.get(currentLocationNumber);
 
     }
 
@@ -55,9 +58,10 @@ public class WorldMap {
         try {
             int loacationToGo = scanner.nextInt();
 
-            for (Location l : map.values()) {
-                if (l.getRoomsToGo().contains(loacationToGo)) {
-                    currentLocation = loacationToGo;
+            for (Integer integer : currentLocation.getRoomsToGo()) {
+                if (currentLocation.getRoomsToGo().contains(loacationToGo)) {
+                    currentLocationNumber = loacationToGo;
+                    currentLocation = map.get(loacationToGo);
                     return true;
                 }
             }
@@ -66,19 +70,20 @@ public class WorldMap {
             return false;
         }
 
-
-
-
         return false;
 
     }
     public ArrayList<Integer> getListOfPossibleLocations(){
 
-        return map.get(currentLocation).getRoomsToGo();
+        return map.get(currentLocationNumber).getRoomsToGo();
 
     }
 
-    public int getCurrentLocation() {
+    public int getCurrentLocationNumber() {
+        return currentLocationNumber;
+    }
+
+    public Location getCurrentLocation() {
         return currentLocation;
     }
 
