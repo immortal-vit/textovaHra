@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Move extends Command{
@@ -12,12 +14,27 @@ public class Move extends Command{
 
     @Override
     public String execute() {
-        if (world.goToNewLocations(sc)){
-            return "presunul si se do: " + world.getCurrentLocation().getName();
-        } else {
-            return "tato mistnost neexistuje nebo neni v nabidce";
+
+        String listOfLocations = "";
+        ArrayList<Integer> arrayOfLocations =  world.getListOfPossibleLocations();
+
+        for (int i = 0; i < arrayOfLocations.size(); i++) {
+            listOfLocations += arrayOfLocations.get(i) + " " + world.getMap().get(arrayOfLocations.get(i)).getName() + ", " ;
         }
 
+        System.out.println(listOfLocations);
+        System.out.println("napiste cislo lokace do ktere chcete jit");
+
+        try {
+            if (world.goToNewLocations(sc.nextInt())){
+                return "presunul si se do: " + world.getCurrentLocation().getName();
+            } else {
+                return "tato mistnost neexistuje nebo neni v nabidce";
+            }
+        }catch (InputMismatchException e){
+            sc.nextLine();
+            return "tato mistnost neexistuje nebo neni v nabidce";
+        }
     }
 
     @Override

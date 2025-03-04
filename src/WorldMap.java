@@ -34,8 +34,6 @@ public class WorldMap {
 
           }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -44,39 +42,20 @@ public class WorldMap {
 
     }
 
-    public boolean goToNewLocations(Scanner scanner) {
+    public boolean goToNewLocations(Integer whereToGo) {
 
-        String listOfLocations = "";
-        ArrayList<Integer> arrayOfLocations =  getListOfPossibleLocations();
+            if (currentLocation.getRoomsToGo().contains(whereToGo)) {
+                currentLocationNumber = whereToGo;
+                currentLocation = map.get(whereToGo);
+                return true;
 
-        for (int i = 0; i < arrayOfLocations.size(); i++) {
-            listOfLocations += arrayOfLocations.get(i) + " " + map.get(arrayOfLocations.get(i)).getName() + ", " ;
-        }
-        System.out.println(listOfLocations);
-        System.out.println("napiste cislo lokace do ktere chcete jit");
-
-        try {
-            int loacationToGo = scanner.nextInt();
-
-            for (Integer integer : currentLocation.getRoomsToGo()) {
-                if (currentLocation.getRoomsToGo().contains(loacationToGo)) {
-                    currentLocationNumber = loacationToGo;
-                    currentLocation = map.get(loacationToGo);
-                    return true;
-                }
-            }
-        } catch (InputMismatchException e) {
-            scanner.nextLine();
-            return false;
         }
 
         return false;
 
     }
     public ArrayList<Integer> getListOfPossibleLocations(){
-
-        return map.get(currentLocationNumber).getRoomsToGo();
-
+        return currentLocation.getRoomsToGo();
     }
 
     public int getCurrentLocationNumber() {
