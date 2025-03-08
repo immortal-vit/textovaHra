@@ -1,8 +1,10 @@
+package game;
+
+import game.objects.Location;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class WorldMap {
 
@@ -16,7 +18,7 @@ public class WorldMap {
 
     private void loadMap(){
 
-        try(BufferedReader br = new BufferedReader(new FileReader("src/map")) ) {
+        try(BufferedReader br = new BufferedReader(new FileReader("src/game/files/map")) ) {
           String line;
 
           while((line = br.readLine()) != null) {

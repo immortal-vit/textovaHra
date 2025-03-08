@@ -1,3 +1,9 @@
+package game;
+
+import game.commands.*;
+import game.commands.list.Exit;
+import game.commands.list.Move;
+
 import java.util.HashMap;
 import java.util.Scanner;
 

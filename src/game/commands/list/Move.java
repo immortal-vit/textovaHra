@@ -1,8 +1,13 @@
+package game.commands.list;
+
+import game.*;
+import game.commands.Command;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Move extends Command{
+public class Move extends Command {
 
        private final WorldMap world;
        private final Scanner sc;

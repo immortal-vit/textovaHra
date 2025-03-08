@@ -1,3 +1,5 @@
+package game.objects;
+
 import java.util.ArrayList;
 
 public class Location {
@@ -5,6 +7,7 @@ public class Location {
     private int mark;
     private String name;
     private ArrayList<Integer> roomsToGo;
+    private Npc npc;
 
     public Location(int mark, String name) {
         this.mark = mark;

@@ -1,4 +1,8 @@
-public class Exit extends Command{
+package game.commands.list;
+
+import game.commands.Command;
+
+public class Exit extends Command {
 
     @Override
     public String execute() {
