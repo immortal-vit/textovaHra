@@ -1,0 +1,84 @@
+@startuml
+start
+:Game initialization;
+:Load commands,texts, characters and world map;
+: display commands;
+: write info about a room where you start;
+
+repeat
+
+  :Display prompt(>>);
+  :Wait for player input;
+   if (Is the command valid?) then (Yes)
+   switch (What is the command)
+               case ( jdi)
+                   : write list of rooms where you can go;
+                   : wait for user input;
+                   if (does the room exists and you can go in it?) is (yes) then
+                     :switch room;
+                     : write info about this room;
+                   else (no)
+                     :stay in the room and tell the player he wrote wrong room;
+                   endif
+               case ( prohledej)
+                    if (Does the room contains Item?) is (Yes) then
+                       : add item to the inventory;
+                    else (no)
+                       : add nothing to the inventory and write 'nic si nenasel';
+                    endif
+               case ( promluvit)
+                    if (is the character in the room) is (yes) then
+                      :write dialogue;
+                    else (no)
+                      :write 'nikdo tu neni' ;
+                    endif
+               case ( otevri inventar)
+                    if (does inventory have some items?) is (yes) then
+                      :write list of items;
+                      :tell the player to choose what item he wants to inspect;
+                      :wait for user input;
+                      if (is the item in iventory?) is (yes) then
+                        :write description about the item;
+                      else (no)
+                        :write 'zadal jsi spatne nazev';
+                      endif
+                    else (no)
+                      :write 'nemas zadne predmety v inventari';
+                    endif
+               case ( pomoc)
+                    : write list of commands;
+               case ( obvinit)
+                    : write list of characters;
+                    : wait for user input;
+                    if (is character on the list?) is (yes) then
+                      : wait for user input if he is sure;
+                      if (is player sure?) is (yes) then
+                        :end game and tell if the player was right;
+                        stop
+                      else (no)
+                      endif
+                    else (no)
+                      :tell the player that he wrote the name wrong;
+                    endif
+               case ( konec)
+                    : end game;
+                      stop
+               endswitch
+   else (no)
+       :write 'tento prikaz neexistuje nebo jsi ho zadal spatne';
+   endif
+
+   @enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
