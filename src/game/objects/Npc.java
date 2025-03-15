@@ -1,17 +1,20 @@
 package game.objects;
 
 public class Npc {
-    private int id;
+    private int roomId;
     private String name;
-    private String dialog;
     private boolean isKidnapper;
+    private String dialog;
 
-    public int getId() {
-        return id;
+    public Npc() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public String getName() {

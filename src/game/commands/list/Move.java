@@ -32,7 +32,12 @@ public class Move extends Command {
 
         try {
             if (world.goToNewLocations(sc.nextInt())){
-                return "presunul si se do: " + world.getCurrentLocation().getName();
+                String description = "\n" + world.getCurrentLocation().getDescription();
+                if (world.getCurrentLocation().getNpc() != null) {
+                    description += "\n v mistnosti se nachazi: " + world.getCurrentLocation().getNpc().getName();
+                }
+
+                return "presunul si se do: " + world.getCurrentLocation().getName() + description;
             } else {
                 return "tato mistnost neexistuje nebo neni v nabidce";
             }

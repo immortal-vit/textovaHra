@@ -6,8 +6,11 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private ArrayList<Item> items;
+    private final ArrayList<Item> items;
 
+    public Inventory() {
+        items = new ArrayList<>();
+    }
 
     public boolean addItem(Item item) {
         items.add(item);
@@ -16,5 +19,14 @@ public class Inventory {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    @Override
+    public String toString() {
+        String items = "";
+        for (Item item : getItems()){
+            items += " " + item.getItemId() + " " + item.getName() + ", " ;
+        }
+        return "v inventari se nachazi tyto itemy: " + items;
     }
 }
