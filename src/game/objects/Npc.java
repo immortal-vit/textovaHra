@@ -1,10 +1,16 @@
 package game.objects;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 public class Npc {
     private int roomId;
     private String name;
     private boolean isKidnapper;
-    private String dialog;
+    private String keyToTextFile;
+    private String text;
 
     public Npc() {
     }
@@ -25,12 +31,12 @@ public class Npc {
         this.name = name;
     }
 
-    public String getDialog() {
-        return dialog;
+    public String getKeyToTextFile() {
+        return keyToTextFile;
     }
 
-    public void setDialog(String dialog) {
-        this.dialog = dialog;
+    public void setKeyToTextFile(String keyToTextFile) {
+        this.keyToTextFile = keyToTextFile;
     }
 
     public boolean isKidnapper() {
@@ -39,5 +45,24 @@ public class Npc {
 
     public void setKidnapper(boolean kidnapper) {
         isKidnapper = kidnapper;
+    }
+    public String readDialogue(){
+        File file = new File(getKeyToTextFile());
+        String text = "";
+        String line;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(getKeyToTextFile()));
+
+            while ((line = reader.readLine()) != null) {
+                text += line + "\n";
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return text;
     }
 }

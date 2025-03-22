@@ -15,11 +15,11 @@ public class Help extends Command {
         String text = "";
 
         for (String key : commands.keySet()) {
-            text +=  key + "  ";
+            text +=  key + "\n";
         }
 
 
-        return "commandy jsou: " + text + "  ," + "pro pouziti commandu napiste nazev commandu" ;
+        return "commandy jsou: \n" + text + "pro pouziti commandu napiste nazev commandu" ;
     }
 
     @Override

@@ -1,10 +1,10 @@
-0,prizemi,popis0,1,2,3,4,5
-1,obyvak,popis1,0,2
-2,kuchyne,popis2,0,1
-3,zachod,popis3,0
-4,garaz,popis4,0
-5,patro1,popis5,0,6,7,8,9
-6,koupelna,popis6,5
-7,pokoj1,popis7,5
-8,pokoj2,popis8,5
-9,loznice,popis9,5
+0;prizemi;chodba vypada normalne a nevypada ze by se tu neco stalo;1;2;3;4;5
+1;obyvak;normalni obyvak;0;2
+2;kuchyne;Hezka kuchyne vypada celkem draze;0;1
+3;zachod;fuj to je smrad uz chci pryc;0
+4;garaz;krasna prostorna garaz ale ty vrata vypadaj dost ponicene jako kdyby se sem nekdo vloupal;0
+5;patro1;vypada to celkem normalne ale vidim tu par obrazu ktere jsou nakrivo mozna bych to tu mel vic prozkoumat;0;6;7;8;9
+6;koupelna;pane boze tolik medvedich chlupu jsem pohromade snad jeste nevidel tady ho musel ten unosce unest;5
+7;pokoj1;tady to vypada,ze tu mel medved bruce pracovnu, mozna by tu neco mohlo byt;5
+8;pokoj2;to vypada jako nadupany herni doupe vidim tu dost hernich konzoli a dva nadupany herni pc;5
+9;loznice;nromalni loznice na posteli sedi nita a breci;5

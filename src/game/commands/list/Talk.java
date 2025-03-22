@@ -14,7 +14,7 @@ public class Talk extends Command {
         if (worldMap.getCurrentLocation().getNpc() == null){
             return "v teto mistnosti e nenachazi postava";
         } else {
-            return worldMap.getCurrentLocation().getNpc().getName() + " rika: " + worldMap.getCurrentLocation().getNpc().getDialog();
+            return worldMap.getCurrentLocation().getNpc().getName() + " rika: \n" + worldMap.getCurrentLocation().getNpc().readDialogue();
         }
 
     }

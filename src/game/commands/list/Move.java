@@ -34,7 +34,7 @@ public class Move extends Command {
             if (world.goToNewLocations(sc.nextInt())){
                 String description = "\n" + world.getCurrentLocation().getDescription();
                 if (world.getCurrentLocation().getNpc() != null) {
-                    description += "\n v mistnosti se nachazi: " + world.getCurrentLocation().getNpc().getName();
+                    description += "\nv mistnosti se nachazi: " + world.getCurrentLocation().getNpc().getName();
                 }
 
                 return "presunul si se do: " + world.getCurrentLocation().getName() + description;

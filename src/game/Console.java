@@ -23,7 +23,7 @@ public class Console {
         commands.put("jdi", new Move(scanner, worldMap));
         commands.put("prohledat", new Explore(worldMap, inventory));
         commands.put("promluvit", new Talk(worldMap));
-        commands.put("obvinit", new Accuse(worldMap, scanner));
+        commands.put("obvinit", new Accuse(worldMap, scanner, inventory));
         commands.put("konec", new Exit());
         commands.put("pomoc",new Help(commands));
         commands.put("inventar", new OpenInventory(worldMap, scanner, inventory));
@@ -33,7 +33,7 @@ public class Console {
 
 
     private void doCommand(){
-        System.out.println(">>");
+        System.out.print(">>");
         String command = scanner.next();
         if(commands.containsKey(command)){
             System.out.println(commands.get(command).execute());

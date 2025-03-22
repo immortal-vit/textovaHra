@@ -2,6 +2,7 @@ package game.commands.list;
 
 import game.WorldMap;
 import game.commands.Command;
+import game.objects.Inventory;
 import game.objects.Npc;
 
 import java.util.Scanner;
@@ -10,15 +11,20 @@ public class Accuse extends Command {
 
     private WorldMap worldMap;
     private Scanner scanner;
+    private Inventory inventory;
     private boolean end;
 
-    public Accuse(WorldMap worldMap, Scanner scanner) {
+    public Accuse(WorldMap worldMap, Scanner scanner, Inventory inventory) {
         this.worldMap = worldMap;
         this.scanner = scanner;
+        this.inventory = inventory;
     }
 
     @Override
     public String execute() {
+        if (inventory.getItems().size() < 4){
+            return "zatim nemate dostatek dukazu a nadrizeni by vam vase obvineni neuverili";
+        }
         System.out.println(showListOfCharacters());
         System.out.println("napiste nazev postavy, kterou chcete obvinit");
         try {
@@ -31,10 +37,14 @@ public class Accuse extends Command {
             if (isPlayerSure(scanner.next())) {
                 if (npcToAccuse.isKidnapper()){
                     end = true;
-                    return "spravne jsi obvinil unosce a vyhral jsi hru :)";
+                    return "spravne jsi obvinil unosce, zachranil medveda Bruce.\n" +
+                            "vyhral jsi hru :)";
                 } else {
                     end = true;
-                    return "obvinil jsi nevinneho obcana a prohral jsi hru :(";
+                    return "obvinil jsi nevinneho obcana, po par tydnech se prokazala jeho nevinnost.\n" +
+                            "Kdyz te odvadeli na popravu, videl jsi sveho partaka colta jak ma na sobe medvedi kozich.\n" +
+                            "V tu chvili ti vsechno doslo, ale uz je pozde, protoze v tu chvili uz na tebe skace popravci ceta edgaru.\n" +
+                            "Zemrel jsi a prohral jsi hru :(";
                 }
             } else {
                 end = false;

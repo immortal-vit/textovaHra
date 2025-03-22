@@ -6,7 +6,7 @@ public class Exit extends Command {
 
     @Override
     public String execute() {
-        return "program se ukoncil";
+        return "rozhodl si se odejit z vysetrovani a vratit se pozdeji";
     }
 
     @Override

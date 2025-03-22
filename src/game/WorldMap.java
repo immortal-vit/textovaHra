@@ -28,7 +28,7 @@ public class WorldMap {
 
           while((line = br.readLine()) != null) {
 
-              String[] split = line.split(",");
+              String[] split = line.split(";");
 
               Location l = new Location(Integer.parseInt(split[0]),split[1],split[2]);
 
@@ -66,7 +66,7 @@ public class WorldMap {
                 if (Integer.parseInt(split[2]) == 1){
                     npc.setKidnapper(true);
                 } else npc.setKidnapper(false);
-                npc.setDialog(split[3]);
+                npc.setKeyToTextFile(split[3]);
 
                 npcs.add(npc);
 
