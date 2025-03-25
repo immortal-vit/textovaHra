@@ -24,7 +24,7 @@ public class Console {
         commands.put("prohledat", new Explore(worldMap, inventory));
         commands.put("promluvit", new Talk(worldMap));
         commands.put("obvinit", new Accuse(worldMap, scanner, inventory));
-        commands.put("konec", new Exit());
+        commands.put("odejit", new Exit());
         commands.put("pomoc",new Help(commands));
         commands.put("inventar", new OpenInventory(worldMap, scanner, inventory));
 
