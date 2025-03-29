@@ -3,6 +3,7 @@ import game.commands.Command;
 import java.util.HashMap;
 
 public class Help extends Command {
+
     private HashMap<String, Command> commands;
 
     public Help(HashMap<String, Command> commands) {

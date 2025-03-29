@@ -8,6 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * class for world map
+ * there methods for loading every location,item and npc
+ */
 public class WorldMap {
 
     private final HashMap<Integer, Location> map = new HashMap<>();
@@ -21,6 +25,9 @@ public class WorldMap {
         loadItems();
     }
 
+    /**
+     * load locations from a file
+     */
     private void loadMap(){
 
         try(BufferedReader br = new BufferedReader(new FileReader("src/game/files/map")) ) {
@@ -50,6 +57,9 @@ public class WorldMap {
 
     }
 
+    /**
+     * load characters from a file
+     */
     private void loadCharacters(){
         try(BufferedReader br = new BufferedReader(new FileReader("src/game/files/characters")) ) {
             String line;
@@ -80,6 +90,10 @@ public class WorldMap {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * load items from a file
+     */
     private void loadItems(){
         try(BufferedReader br = new BufferedReader(new FileReader("src/game/files/items")) ) {
             String line;
@@ -107,6 +121,11 @@ public class WorldMap {
     }
 
 
+    /**
+     * checks if player can go to a location
+     * @param whereToGo Integer of location where will player go
+     * @return true or false if player can go there
+     */
     public boolean goToNewLocations(Integer whereToGo) {
 
             if (currentLocation.getRoomsToGo().contains(whereToGo)) {

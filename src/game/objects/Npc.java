@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * class for Npc
+ */
 public class Npc {
     private int roomId;
     private String name;
@@ -46,6 +49,11 @@ public class Npc {
     public void setKidnapper(boolean kidnapper) {
         isKidnapper = kidnapper;
     }
+
+    /**
+     *
+     * @return dialogue from selected npc
+     */
     public String readDialogue(){
         File file = new File(getKeyToTextFile());
         String text = "";

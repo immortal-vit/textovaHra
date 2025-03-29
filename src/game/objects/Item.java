@@ -1,5 +1,8 @@
 package game.objects;
 
+/**
+ * class for item
+ */
 public class Item {
     private int roomId;
     private int itemId;

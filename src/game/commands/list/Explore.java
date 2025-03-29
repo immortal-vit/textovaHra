@@ -4,6 +4,9 @@ import game.WorldMap;
 import game.commands.Command;
 import game.objects.Inventory;
 
+/**
+ * class for exploring each location
+ */
 public class Explore extends Command {
 
     private WorldMap worldMap;
@@ -14,6 +17,10 @@ public class Explore extends Command {
         this.inventory = inventory;
     }
 
+    /**
+     * if the player found item he will get it to its inventory
+     * @return text if the player found item or not
+     */
     @Override
     public String execute() {
 

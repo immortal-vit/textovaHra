@@ -2,6 +2,9 @@ package game.objects;
 
 import java.util.ArrayList;
 
+/**
+ * class for location
+ */
 public class Location {
 
     private int iD;
@@ -55,6 +58,10 @@ public class Location {
         return item;
     }
 
+    /**
+     * collect item and remove it from a world map
+     * @return item to the inventory
+     */
     public Item collectItem(){
         Item itemToCollect = item;
         this.item = null;

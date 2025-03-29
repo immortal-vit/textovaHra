@@ -4,6 +4,9 @@ import game.commands.Command;
 
 import java.util.ArrayList;
 
+/**
+ * class for inventory
+ */
 public class Inventory {
 
     private final ArrayList<Item> items;

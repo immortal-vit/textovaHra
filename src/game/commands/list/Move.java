@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * class for moving between locations
+ */
 public class Move extends Command {
 
        private final WorldMap world;
@@ -17,6 +20,10 @@ public class Move extends Command {
         this.world = world;
     }
 
+    /**
+     * player will be able to move thanks to this method
+     * @return playter will move to a location or not and will get a text
+     */
     @Override
     public String execute() {
 
@@ -49,7 +56,7 @@ public class Move extends Command {
 
     @Override
     public boolean exit() {
-        return true;
+        return false;
     }
 
 }

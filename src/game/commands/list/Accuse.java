@@ -7,6 +7,10 @@ import game.objects.Npc;
 
 import java.util.Scanner;
 
+/**
+ * class for accusing the characters
+ *this class is crucial for game ending
+ */
 public class Accuse extends Command {
 
     private WorldMap worldMap;
@@ -20,9 +24,16 @@ public class Accuse extends Command {
         this.inventory = inventory;
     }
 
+    /**
+     * the player will write name of the character
+     * if he writes it wrong the game will continue normally
+     * if he writes it right the game will ask him if he is sure
+     * if the player is sure he will get the ending based of if the character is kidnapper or not
+     * @return ending or the player will continue in the game
+     */
     @Override
     public String execute() {
-        if (inventory.getItems().size() < 4){
+        if (inventory.getItems().size() < 3){
             return "zatim nemate dostatek dukazu a nadrizeni by vam vase obvineni neuverili";
         }
         System.out.println(showListOfCharacters());
@@ -57,11 +68,17 @@ public class Accuse extends Command {
         }
     }
 
+    /**
+     * @return boolean if the game ended or no
+     */
     @Override
     public boolean exit() {
         return end;
     }
 
+    /**
+     * @return list of characters
+     */
     private String showListOfCharacters() {
         String list = "";
         for (Npc npc: worldMap.getNpcs()) {
@@ -69,6 +86,12 @@ public class Accuse extends Command {
         }
         return list;
     }
+
+    /**
+     *
+     * @param name of the npc the player wants to choose
+     * @return npc for accusing
+     */
     private Npc chooseNpc(String name) {
         Npc chosenNpc = null;
         for (Npc npc: worldMap.getNpcs()){
@@ -79,6 +102,12 @@ public class Accuse extends Command {
         }
         return chosenNpc;
     }
+
+    /**
+     * if the player is sure the game will end otherwise the game will continue
+     * @param answer yes or somethng else answer
+     * @return ending
+     */
     private boolean isPlayerSure(String answer){
         if (answer.equalsIgnoreCase("ano")){
             return true;

@@ -7,6 +7,9 @@ import game.objects.Item;
 
 import java.util.Scanner;
 
+/**
+ * class for opening inventory
+ */
 public class OpenInventory extends Command {
 
     private WorldMap worldMap;
@@ -19,6 +22,10 @@ public class OpenInventory extends Command {
         this.inventory = inventory;
     }
 
+    /**
+     * player will look into its inventory a will be able to write number of item to get info about it
+     * @return text of the item or text that the player cant find it
+     */
     @Override
     public String execute() {
         if (openInventory(inventory)){
@@ -42,6 +49,11 @@ public class OpenInventory extends Command {
         return false;
     }
 
+    /**
+     * will check if the player has some items in his inventory
+     * @param inventory iventory from the player will be able to open
+     * @return true or false it depends if the player has some items in his inventory
+     */
     private boolean openInventory(Inventory inventory) {
         if (inventory.getItems().isEmpty()) {
             return false;
@@ -50,6 +62,12 @@ public class OpenInventory extends Command {
         }
 
     }
+
+    /**
+     * will get an item description
+     * @param itemId number of item
+     * @return item description
+     */
     private String chooseItem(Integer itemId) {
         for (Item item : inventory.getItems()) {
             if (item.getItemId() == itemId) {
