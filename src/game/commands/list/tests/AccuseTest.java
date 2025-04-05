@@ -11,6 +11,9 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * this test class is testing accusing the most important method in the game
+ */
 class AccuseTest {
 
     private Accuse accuse;
@@ -22,6 +25,10 @@ class AccuseTest {
     Item i3;
     Item i4;
 
+    /**
+     * chatgpt helped me to generate this and I rewrite it
+     * this will initialize the world map and inventory both are needed for accuse to work
+     */
     @BeforeEach
     void setUp() {
         worldMap = new WorldMap();
@@ -33,6 +40,9 @@ class AccuseTest {
         i4 = new Item();
     }
 
+    /**
+     * this will test accuse if player does not have enough evidence
+     */
     @Test
     void testAccuseWithoutEvidence() {
         scanner = new Scanner("colt");
@@ -43,6 +53,9 @@ class AccuseTest {
         assertFalse(accuse.exit());
     }
 
+    /**
+     * this will test accuse method if the player write something wrong and make sure that the program does not throw error
+     */
     @Test
     void testAccuseWrongName() {
         addItemsForTest();
@@ -55,6 +68,9 @@ class AccuseTest {
         assertFalse(accuse.exit());
     }
 
+    /**
+     * this will test if the program return right text if player accuses wrong person
+     */
     @Test
     void testAccuseCorrectlyInnocent() {
         addItemsForTest();
@@ -67,6 +83,9 @@ class AccuseTest {
         assertTrue(accuse.exit());
     }
 
+    /**
+     * this will test if the program return right text if player accuses right person
+     */
     @Test
     void testAccuseCorrectlyKidnapper() {
         addItemsForTest();
@@ -75,10 +94,13 @@ class AccuseTest {
         accuse = new Accuse(worldMap, scanner, inventory);
 
         String result = accuse.execute();
-        assertTrue(result.contains("spravne jsi obvinil unosce"));
+        assertTrue(result.contains("Spravne jsi obvinil unosce, zachranil medveda Bruce."));
         assertTrue(accuse.exit());
     }
 
+    /**
+     * this will test if the player write anything else than yes that he will return to searching the house without any error
+     */
     @Test
     void testAccuseNotSure() {
         addItemsForTest();

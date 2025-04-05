@@ -8,8 +8,17 @@ public class Item {
     private int itemId;
     private String name;
     private String description;
+    private boolean isCollectable;
 
     public Item() {
+    }
+
+    public boolean isCollectable() {
+        return isCollectable;
+    }
+
+    public void setCollectable(boolean collectable) {
+        isCollectable = collectable;
     }
 
     public String getDescription() {

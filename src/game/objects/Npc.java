@@ -13,9 +13,19 @@ public class Npc {
     private String name;
     private boolean isKidnapper;
     private String keyToTextFile;
-    private String text;
+    private boolean isMovable;
+
+
 
     public Npc() {
+    }
+
+    public void setMovable(boolean movable) {
+        isMovable = movable;
+    }
+
+    public boolean isMovable() {
+        return isMovable;
     }
 
     public int getRoomId() {

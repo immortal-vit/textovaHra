@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Location {
 
-    private int iD;
+    private int id;
     private String name;
     private String description;
     private ArrayList<Integer> roomsToGo;
@@ -15,18 +15,18 @@ public class Location {
     private Item item;
 
     public Location(int mark, String name, String description) {
-        this.iD = mark;
+        this.id = mark;
         this.name = name;
         this.description = description;
     }
 
 
     public int getID() {
-        return iD;
+        return id;
     }
 
     public void setID(int iD) {
-        this.iD = iD;
+        this.id = iD;
     }
 
     public String getName() {
@@ -50,8 +50,8 @@ public class Location {
         return npc;
     }
 
-    public int getiD() {
-        return iD;
+    public int getId() {
+        return id;
     }
 
     public Item getItem() {

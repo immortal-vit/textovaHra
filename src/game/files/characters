@@ -1,5 +1,5 @@
-1;Piper;0;src/game/files/characterDialogues/piperText
-0;Colt;1;src/game/files/characterDialogues/coltText
-9;Nita;0;src/game/files/characterDialogues/nitaText
-4;Leon;0;src/game/files/characterDialogues/leonText
-2;Brock;0;src/game/files/characterDialogues/brockText
+1;Piper;0;src/game/files/characterDialogues/piperText;false
+0;Colt;1;src/game/files/characterDialogues/coltText;true
+9;Nita;0;src/game/files/characterDialogues/nitaText;false
+4;Leon;0;src/game/files/characterDialogues/leonText;false
+2;Brock;0;src/game/files/characterDialogues/brockText;false

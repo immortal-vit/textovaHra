@@ -5,6 +5,9 @@ import game.commands.Command;
 import game.objects.Inventory;
 import game.objects.Npc;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 
 /**
@@ -47,15 +50,9 @@ public class Accuse extends Command {
             System.out.println("napiste 'ano' pokud jste si jisty a chcete ukoncit hru");
             if (isPlayerSure(scanner.next())) {
                 if (npcToAccuse.isKidnapper()){
-                    end = true;
-                    return "spravne jsi obvinil unosce, zachranil medveda Bruce.\n" +
-                            "vyhral jsi hru :)";
+                    return getEnding("src/game/files/goodEnding");
                 } else {
-                    end = true;
-                    return "obvinil jsi nevinneho obcana, po par tydnech se prokazala jeho nevinnost.\n" +
-                            "Kdyz te odvadeli na popravu, videl jsi sveho partaka colta jak ma na sobe medvedi kozich.\n" +
-                            "V tu chvili ti vsechno doslo, ale uz je pozde, protoze v tu chvili uz na tebe skace popravci ceta edgaru.\n" +
-                            "Zemrel jsi a prohral jsi hru :(";
+                    return getEnding("src/game/files/badEnding");
                 }
             } else {
                 end = false;
@@ -114,6 +111,20 @@ public class Accuse extends Command {
         } else {
             return false;
         }
+    }
+    private String getEnding(String nameOfFile){
+        String ending = "";
+        String line;
+        end = true;
+        try(BufferedReader bf = new BufferedReader(new FileReader(nameOfFile))) {
+            while ((line = bf.readLine()) != null){
+                ending += line + "\n";
+            }
+
+        }catch (Exception e){
+            System.out.println("neco se pokazilo pri nacitani filu");
+        }
+        return ending;
     }
 
 }

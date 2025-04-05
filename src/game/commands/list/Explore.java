@@ -20,16 +20,19 @@ public class Explore extends Command {
     /**
      * if the player found item he will get it to its inventory
      * @return text if the player found item or not
+     * if the player got item that can not be picked up he will get just the text about the item
      */
     @Override
     public String execute() {
 
         if (worldMap.getCurrentLocation().getItem() == null) {
             return "nic si nenasel";
-        } else {
-            inventory.addItem(worldMap.getCurrentLocation().getItem());
+        } else if (worldMap.getCurrentLocation().getItem().isCollectable()) {
             return "nasel si " + worldMap.getCurrentLocation().collectItem().getName() + ", predmet sis ulozil do inventare";
+        }else {
+            return "nasel si " + worldMap.getCurrentLocation().getItem().getName() + ", " + worldMap.getCurrentLocation().getItem().getDescription();
         }
+
 
     }
 

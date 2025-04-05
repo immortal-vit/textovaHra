@@ -4,6 +4,7 @@ import game.commands.*;
 import game.commands.list.*;
 import game.objects.Inventory;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -58,8 +59,18 @@ public class Console {
      * @return small tutorial and introduction
      */
     private String writeIntroduction(){
-        // tato metoda bude dokoncena pozdeji az si rozmyslim co do ni napsat
-        return "uvod do hry + mensi tutorial jak se hra bude hrat + napiste 'pomoc' pro zobrazeni commandu";
+        String text = "";
+        String line;
+
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader("src/game/files/introduction"));
+            while ((line = bf.readLine()) != null ){
+                text += line + "\n";
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return text;
     }
 
     /**
@@ -74,5 +85,6 @@ public class Console {
             doCommand();
 
         } while (!exit);
+        scanner.close();
     }
 }

@@ -77,6 +77,7 @@ public class WorldMap {
                     npc.setKidnapper(true);
                 } else npc.setKidnapper(false);
                 npc.setKeyToTextFile(split[3]);
+                npc.setMovable(Boolean.parseBoolean(split[4]));
 
                 npcs.add(npc);
 
@@ -108,6 +109,7 @@ public class WorldMap {
                 item.setName(split[1]);
                 item.setDescription(split[2]);
                 item.setItemId(Integer.parseInt(split[3]));
+                item.setCollectable(Boolean.parseBoolean(split[4]));
 
                 for (Location loc : map.values()) {
                     if (loc.getID() == item.getRoomId()){
