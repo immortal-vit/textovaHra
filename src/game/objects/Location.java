@@ -1,11 +1,12 @@
 package game.objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * class for location
  */
-public class Location {
+public class Location implements Serializable {
 
     private int id;
     private String name;

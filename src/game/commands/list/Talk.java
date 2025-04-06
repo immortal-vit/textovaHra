@@ -20,7 +20,7 @@ public class Talk extends Command {
     @Override
     public String execute() {
         if (worldMap.getCurrentLocation().getNpc() == null){
-            return "v teto mistnosti e nenachazi postava";
+            return "v teto mistnosti se nenachazi postava";
         } else {
             return worldMap.getCurrentLocation().getNpc().getName() + " rika: \n" + worldMap.getCurrentLocation().getNpc().readDialogue();
         }

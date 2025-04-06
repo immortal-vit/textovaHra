@@ -28,6 +28,7 @@ public class Explore extends Command {
         if (worldMap.getCurrentLocation().getItem() == null) {
             return "nic si nenasel";
         } else if (worldMap.getCurrentLocation().getItem().isCollectable()) {
+            inventory.addItem(worldMap.getCurrentLocation().getItem());
             return "nasel si " + worldMap.getCurrentLocation().collectItem().getName() + ", predmet sis ulozil do inventare";
         }else {
             return "nasel si " + worldMap.getCurrentLocation().getItem().getName() + ", " + worldMap.getCurrentLocation().getItem().getDescription();

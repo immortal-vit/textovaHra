@@ -1,9 +1,11 @@
 package game.objects;
 
+import java.io.Serializable;
+
 /**
  * class for item
  */
-public class Item {
+public class Item implements Serializable {
     private int roomId;
     private int itemId;
     private String name;

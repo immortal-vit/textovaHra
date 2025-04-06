@@ -6,6 +6,7 @@ import game.objects.Inventory;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -21,13 +22,21 @@ public class Console {
     private Inventory inventory;
 
     /**
-     * this will initialize every component
+     * this will initialize map inventory and scanner
      */
     private void initialization(){
-        commands = new HashMap<>();
         worldMap = new WorldMap();
         inventory = new Inventory();
         scanner = new Scanner(System.in);
+
+    }
+
+    /**
+     * initialize all commands
+     */
+    private void initializeCommands(){
+        commands = new HashMap<>();
+
         commands.put("jdi", new Move(scanner, worldMap));
         commands.put("prohledat", new Explore(worldMap, inventory));
         commands.put("promluvit", new Talk(worldMap));
@@ -35,8 +44,8 @@ public class Console {
         commands.put("odejit", new Exit());
         commands.put("pomoc",new Help(commands));
         commands.put("inventar", new OpenInventory(worldMap, scanner, inventory));
-
-
+        commands.put("ulozit",new Save(inventory,worldMap));
+        commands.put("nahrat",new Load());
     }
 
 
@@ -45,12 +54,26 @@ public class Console {
      */
     private void doCommand(){
         System.out.print(">>");
-        String command = scanner.next();
-        if(commands.containsKey(command)){
-            System.out.println(commands.get(command).execute());
-            exit = commands.get(command).exit();
-        } else {
+        String command = scanner.nextLine();
+        Command commandObj = commands.get(command);
+        if (!commands.containsKey(command)) {
             System.out.println("neplatny prikaz");
+            return;
+        }
+
+        if (command.equals("nahrat")) {
+            System.out.println(commandObj.execute());
+            this.worldMap = ((Load) commandObj).worldMap;
+            this.inventory = ((Load) commandObj).inventory;
+            initializeCommands();
+            return;
+        }
+
+        System.out.println(commandObj.execute());
+        exit = commandObj.exit();
+
+        if (!command.equals("obvinit")) {
+            worldMap.moveNpc();
         }
     }
 
@@ -80,11 +103,14 @@ public class Console {
      */
     public void play(){
         initialization();
+        initializeCommands();
         System.out.println(writeIntroduction());
         do {
             doCommand();
+            } while (!exit);
 
-        } while (!exit);
+
+
         scanner.close();
     }
 }

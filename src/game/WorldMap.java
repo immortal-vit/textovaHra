@@ -7,22 +7,25 @@ import game.objects.Npc;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * class for world map
  * there methods for loading every location,item and npc
  */
-public class WorldMap {
+public class WorldMap implements Serializable {
 
     private final HashMap<Integer, Location> map = new HashMap<>();
     private int currentLocationNumber;
     private Location currentLocation;
     private ArrayList<Npc> npcs;
+    private Random rand;
 
     public WorldMap() {
         loadMap();
         loadCharacters();
         loadItems();
+        rand = new Random();
     }
 
     /**
@@ -140,6 +143,26 @@ public class WorldMap {
         return false;
 
     }
+    public void moveNpc(){
+        for (Npc npc : npcs) {
+            if (npc.isMovable()){
+                ArrayList<Integer> roomsWhereNpcCanGo = map.get(npc.getRoomId()).getRoomsToGo();
+                if (rand.nextInt(4) == 1){
+                    int whereToGo = roomsWhereNpcCanGo.get(rand.nextInt(roomsWhereNpcCanGo.size()));
+                     for (Location loc : map.values()) {
+                        if (loc.getID() == whereToGo && loc.getNpc() == null){
+                            map.get(npc.getRoomId()).setNpc(null);
+                            map.get(whereToGo).setNpc(npc);
+                            npc.setRoomId(whereToGo);
+                            System.out.println(npc.getName() +": cau detektive presunul jsem se do: " + loc.getName());
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public ArrayList<Integer> getListOfPossibleLocations(){
         return currentLocation.getRoomsToGo();
     }

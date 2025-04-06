@@ -1,14 +1,11 @@
 package game.objects;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  * class for Npc
  */
-public class Npc {
+public class Npc implements Serializable {
     private int roomId;
     private String name;
     private boolean isKidnapper;

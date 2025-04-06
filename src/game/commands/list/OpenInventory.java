@@ -71,6 +71,7 @@ public class OpenInventory extends Command {
     private String chooseItem(Integer itemId) {
         for (Item item : inventory.getItems()) {
             if (item.getItemId() == itemId) {
+                scanner.nextLine();
                 return item.getDescription();
             }
         }

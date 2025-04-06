@@ -43,9 +43,10 @@ public class Move extends Command {
                 if (world.getCurrentLocation().getNpc() != null) {
                     description += "\nv mistnosti se nachazi: " + world.getCurrentLocation().getNpc().getName();
                 }
-
+                sc.nextLine();
                 return "presunul si se do: " + world.getCurrentLocation().getName() + description;
             } else {
+                sc.nextLine();
                 return "tato mistnost neexistuje nebo neni v nabidce";
             }
         }catch (InputMismatchException e){

@@ -2,12 +2,13 @@ package game.objects;
 
 import game.commands.Command;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * class for inventory
  */
-public class Inventory {
+public class Inventory implements Serializable {
 
     private final ArrayList<Item> items;
 
@@ -32,4 +33,6 @@ public class Inventory {
         }
         return "v inventari se nachazi tyto itemy: " + items;
     }
+
+
 }
