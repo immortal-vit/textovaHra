@@ -75,7 +75,7 @@ public class Npc implements Serializable {
 
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("nepodaril se nacist dialog");
         }
 
         return text;

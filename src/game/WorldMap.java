@@ -53,7 +53,7 @@ public class WorldMap implements Serializable {
           }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("nepodarila se nacist mapa");
         }
         currentLocationNumber = 0;
         currentLocation = map.get(currentLocationNumber);
@@ -91,7 +91,7 @@ public class WorldMap implements Serializable {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("nepodarilo se nacist postavy");
         }
     }
 
@@ -121,7 +121,7 @@ public class WorldMap implements Serializable {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("nepodarilo se nacist itemy");
         }
     }
 
